@@ -1,0 +1,58 @@
+/*Rodrigo Santomauro (199089) - Nicolas Brandi (248135)*/
+
+@media(max-width:480px){
+	article {
+		background-color:#71d511 !important;
+	}
+}
+
+#banner {
+     height: 150px; /*Se setea tamaño*/
+     width: 100%;
+}
+
+nav { /* Se define color al menu de navegacion*/
+     background-color: #fff3d6;
+     width: 100%;
+}
+
+article { /* Se define color de fondo del contenido y el margen del mismo*/
+     background-color: #d6eaff;
+     margin-left: 5%;
+     padding-left: 5%;
+}
+
+table {
+     width: 50%;
+}
+
+tbody {
+     width: 50%;
+     align-content: center;
+}
+
+.motivoLlamada { /* Se ajusta el tamaño de las imagenes para la tabla */
+     width: 50%;
+     height: 50%;
+     display: block;
+     margin: auto;
+}
+
+.motivoNoAtendio { /* Se ajusta la imagen para la seleccion del motivo */
+     width: 3%;
+     height: 3%;
+     margin: auto;
+}
+
+.textoTablaTitulo {
+     text-align: center;
+     font-weight: bold;
+}
+
+.textoTabla {
+     text-align: center;
+}
+
+footer { /* Define color del footer*/
+     background-color: #bbbbbb;
+}

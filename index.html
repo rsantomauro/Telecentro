@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- Rodrigo Santomauro (199089) - Nicolas Brandi (248135)-->
+<html lang="en">
+<head>
+     <meta charset="UTF-8"> <!-- seteo la codificacion -->
+     <title>Telecentro</title>
+     <link rel=StyleSheet href="css/estilos.css" type="text/css"/>
+     <script type="text/javascript" src="js/clases.js"></script>
+     <script type="text/javascript" src="js/llamadas.js"></script>
+     <script type="text/javascript" src="js/operadores.js"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script type="text/text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+
+          google.charts.setOnLoadCallBack(drawChart);
+     </script>
+</head>
+<body>
+	<header> <!-- banner de la pagina y "tope" -->
+          <a id="IrTope"></a>
+          <img id="banner" src="img/banner.png"/>
+     </header>
+     <nav> <!-- menu de navegacion -->
+          <a href="#Operadores">Operadores</a> |
+          <a href="#Llamadas">Llamadas</a> |
+          <a href="#Consultas">Consultas</a> |
+     </nav>
+     <article> <!-- Contenido de la pagina-->
+ 		<section> <!-- Seccion de Manejo Operadores-->
+               <h1><a id="Operadores"></a><u>Manejo de Operadores</u></h1>
+ 		     <br>
+			<h3>Registro de Operadores</h3>
+			<form> <!-- Formulario de Registro de Operadores-->
+				Nombre: <input type="text" id="operadorNombre" placeholder="Nombre" />
+				Edad: <input type="number" id="operadorEdad" placeholder="edad" placeholder="18-65" min="18" max="65"/>
+				Mail: <input type="email" id="operadorMail" placeholder="mail" />
+				<input type="button" id="agregarOperador" value="Agregar">
+			</form>
+
+			<h3>Visualizaci&oacuten de Operadores</h3>
+			<form> <!-- Visualizacion de Operadores-->
+				Orden:
+				<input type="radio" id="ordenarNombre" name="ordenarOperador" value="nombre" checked>nombre
+				<input type="radio" id="ordenarEdad" name="ordenarOperador" value="edad">edad
+
+				<ul id="listaDeOperadores">
+
+				</ul>
+			</form>
+
+			<br>
+		</section>
+		<section> <!-- Seccion de Manejo de Llamadas-->
+			<h1><a id="Llamadas"></a><u>Manejo de Llamadas</u></h1>
+			<br>
+			<h3>Registro de Llamadas</h3>
+			<form> <!-- Formulario de Registro de Llamadas-->
+				Operador: <select id="operadorCombo" name="operadorLlamadaCombo">
+
+							</select>
+				Descripción: <input type="text" id="descricionLlamada" placeholder="Descripción" />
+				Motivo: <input type="number" id="motivoLlamada" placeholder="1-6" min="1" max="6">
+				Duración: <input type="number" id="duracionLlamada" placeholder="1-60" min="1" max="60">
+				Celular: <input type="number" id="celular" placeholder="celular" min="091000000" max="099999999">
+				<input type="button" id="agregarLlamada" value="Agregar">
+			</form>
+
+			<h3>Muestra de Llamadas</h3>
+			<form> <!-- Formulacrio donde muestra las llamadas-->
+				Orden:
+				<input type="radio" id="ordenarLlamadaPorNumero" name="ordenarLlamadaPorNumero" value="numero" checked>número
+				<input type="radio" id="ordenarLlamadaPorNombre" name="ordenarLlamadaPorNumero" value="nombre">nombre/número
+			</form>
+			<table border="1px" id="tablaMuestraLlamadas"> <!-- Tabla donde despliega el contenido de las llamadas-->
+
+			</table>
+
+			<br>
+		</section>
+		<section> <!-- Seccion de Consultas-->
+			<h1><a id="Consultas"></a><u>Consultas</u></h1>
+
+			<h3>Consulta por operador</h3>
+			<form> <!-- Formulario de consulta al operador-->
+				Operador: <select class="" id="operadorConsultaCombo" name="operadorLlamadaCombo">
+
+							</select>
+				<input type="button" id="consultarHistoria" value="consultarHistoria">
+				<br><br>
+				Motivos no atendió:<p id="motivosNoAtendioOperador"></p>
+				Llamada mas larga:<p id="masLarga"></p>
+				Tiempo promedio de atenci&oacuten: <p id="promedioAtencion"></p>
+			</form>
+
+			<h3>Consultas por llamadas</h3>
+               <form>
+			     Duraci&oacuten: <input type="number" id="consultaDuracion" name="consultaDuracion" placeholder="15" min="1" max="60">
+			     <input type="button" id="consultarDuracionLlamadas" value="Consultar operadores con más llamadas de esa duración">
+               </form>
+			<ul id="listaDuracionLlamada"> <!-- Lista de despliege de duracion-->
+
+			</ul>
+               <form> <!-- Formulario de consulta de Llamadas-->
+          		Palabras: <input type="text" id="consultaPalabra" placeholder="ruido">
+          		<input type="button" id="consultarDescripcionLlamadas" value="Consultar palabras">
+               </form>
+			<table border="1px" id="consultarPalabras"> <!-- Tabla de despliegue de llamadas-->
+				<tr>
+					<td><p class="textoTablaTitulo">NUMERO</p></td>
+					<td><p class="textoTablaTitulo">OPERADOR</p></td>
+					<td><p class="textoTablaTitulo">DESCRIPCION</p></td>
+					<td><p class="textoTablaTitulo">MOTIVO</p></td>
+					<td><p class="textoTablaTitulo">DURACION</p></td>
+					<td><p class="textoTablaTitulo">CELULAR</p></td>
+				</tr>
+			</table>
+               <br>
+			<input type="button" id="distribuirLlamadas" value="Distribución de llamadas">
+               <div id="chart_div" style="width:400; height:300"></div>
+			<br><br>
+		</section>
+	</article>
+     <a href="#IrTope">Ir al tope</a>
+	<footer> <!-- Pie de Pagina - Materia y Nombres integrantes-->
+          <p align="center">
+               Obligatorio de Programación I - 1er semestre 2019 - Cátetedra de Programación<br>
+               Rodrigo Santomauro (199089) - Nicolas Brandi (248135)
+          </p>
+	</footer>
+</body>
+</html>
